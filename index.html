@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dua Paylaşma Uygulaması</title>
+    <title>Nazar Duası Paylaş</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -30,12 +30,12 @@
 <body class="d-flex justify-content-center align-items-center vh-100">
 
     <button onclick="shareDua()" class="btn btn-custom">
-        Dua'yı Paylaş
+        Nazar Duası Paylaş
     </button>
 
     <script>
         function shareDua() {
-            const audioUrl = 'https://www.example.com/ayetel-kursi.mp3';
+            const audioUrl = 'https://www.example.com/nazar-duasi.mp3';
             const whatsappUrl = `https://api.whatsapp.com/send?text=Dinle: ${encodeURIComponent(audioUrl)}`;
             window.open(whatsappUrl, '_blank');
         }
