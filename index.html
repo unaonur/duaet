@@ -29,7 +29,9 @@
         }
 
         .input-container {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 400px;
         }
 
         .input-field {
@@ -38,6 +40,8 @@
             border: 2px solid #007700;
             border-radius: 5px;
             color: #009900;
+            background-color: #ffffff;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -46,9 +50,19 @@
     <!-- Arapça Allah Yazısı -->
     <div class="allah-text mb-4" style="font-size: 8rem;">الله</div>
 
-    <!-- İsim ve Soyisim Girişi -->
-    <div class="input-container w-75" style="max-width: 400px;">
-        <input type="text" id="nameInput" class="input-field" placeholder="İsim ve Soyisim Girin">
+    <!-- İsim Girişi -->
+    <div class="input-container">
+        <input type="text" id="nameInput" class="input-field" placeholder="İsim Girin">
+    </div>
+
+    <!-- Soyisim Girişi -->
+    <div class="input-container">
+        <input type="text" id="surnameInput" class="input-field" placeholder="Soyisim Girin">
+    </div>
+
+    <!-- Yakınlık Derecesi Girişi -->
+    <div class="input-container">
+        <input type="text" id="relationInput" class="input-field" placeholder="Yakınlık Derecesi (Anne, Baba, Arkadaş)">
     </div>
 
     <!-- Buton -->
@@ -59,12 +73,14 @@
     <script>
         function shareDua() {
             const name = document.getElementById("nameInput").value;
+            const surname = document.getElementById("surnameInput").value;
+            const relation = document.getElementById("relationInput").value;
             const audioUrl = 'https://www.example.com/nazar-duasi.mp3';
 
             let message = "Dinle: " + audioUrl;
-            
-            if (name) {
-                message = `Sevgili ${name} için Nazar Duası: ${audioUrl}`;
+
+            if (name || surname || relation) {
+                message = `Sevgili ${relation ? relation + " " : ""}${name} ${surname} için Nazar Duası: ${audioUrl}`;
             }
 
             const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
