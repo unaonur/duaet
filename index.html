@@ -12,6 +12,7 @@
             background-color: #009900; /* İslam yeşili */
             position: relative;
             overflow: hidden;
+            color: #ffffff;
         }
 
         .btn-custom {
@@ -30,15 +31,13 @@
             border-color: #005500;
         }
 
-        .background-text {
-            position: absolute;
-            font-size: 12rem;
-            color: rgba(255, 255, 255, 0.1);
+        .allah-text {
+            font-size: 8rem;
+            color: #ffffff;
             font-family: 'Amiri', serif;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
+            text-align: center;
+            margin-bottom: 50px;
+            z-index: 2;
         }
 
         .nazar-boncuk {
@@ -51,13 +50,13 @@
         }
     </style>
 </head>
-<body class="d-flex justify-content-center align-items-center vh-100">
+<body class="d-flex flex-column justify-content-center align-items-center vh-100">
 
     <!-- Nazar Boncuğu -->
     <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Nazar_Boncuk.png" alt="Nazar Boncuğu" class="nazar-boncuk">
 
     <!-- Arapça Allah Yazısı -->
-    <div class="background-text">الله</div>
+    <div class="allah-text">الله</div>
 
     <!-- Buton -->
     <button onclick="shareDua()" class="btn btn-custom">
