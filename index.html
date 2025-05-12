@@ -10,8 +10,6 @@
     <style>
         body {
             background-color: #009900; /* İslam yeşili */
-            position: relative;
-            overflow: hidden;
             color: #ffffff;
         }
 
@@ -21,8 +19,7 @@
             border: 2px solid #007700;
             font-size: 1.5rem;
             padding: 15px 30px;
-            z-index: 2;
-            position: relative;
+            margin-top: 20px;
         }
 
         .btn-custom:hover {
@@ -31,21 +28,28 @@
             border-color: #005500;
         }
 
-        .allah-text {
-            font-size: 8rem;
-            color: #ffffff;
-            font-family: 'Amiri', serif;
-            text-align: center;
-            margin-bottom: 50px;
-            z-index: 2;
+        .input-container {
+            margin-bottom: 20px;
         }
 
+        .input-field {
+            padding: 10px;
+            width: 100%;
+            border: 2px solid #007700;
+            border-radius: 5px;
+            color: #009900;
+        }
     </style>
 </head>
 <body class="d-flex flex-column justify-content-center align-items-center vh-100">
 
     <!-- Arapça Allah Yazısı -->
-    <div class="allah-text">الله</div>
+    <div class="allah-text mb-4" style="font-size: 8rem;">الله</div>
+
+    <!-- İsim ve Soyisim Girişi -->
+    <div class="input-container w-75" style="max-width: 400px;">
+        <input type="text" id="nameInput" class="input-field" placeholder="İsim ve Soyisim Girin">
+    </div>
 
     <!-- Buton -->
     <button onclick="shareDua()" class="btn btn-custom">
@@ -54,8 +58,16 @@
 
     <script>
         function shareDua() {
+            const name = document.getElementById("nameInput").value;
             const audioUrl = 'https://www.example.com/nazar-duasi.mp3';
-            const whatsappUrl = `https://api.whatsapp.com/send?text=Dinle: ${encodeURIComponent(audioUrl)}`;
+
+            let message = "Dinle: " + audioUrl;
+            
+            if (name) {
+                message = `Sevgili ${name} için Nazar Duası: ${audioUrl}`;
+            }
+
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
     </script>
