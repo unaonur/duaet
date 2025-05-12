@@ -43,12 +43,22 @@
             background-color: #ffffff;
             margin-bottom: 10px;
         }
+
+        .error-message {
+            color: #ffcc00;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            display: none;
+        }
     </style>
 </head>
 <body class="d-flex flex-column justify-content-center align-items-center vh-100">
 
     <!-- Arapça Allah Yazısı -->
     <div class="allah-text mb-4" style="font-size: 8rem;">الله</div>
+
+    <!-- Hata Mesajı -->
+    <div class="error-message" id="errorMessage">Lütfen tüm alanları doldurun!</div>
 
     <!-- İsim Girişi -->
     <div class="input-container">
@@ -72,17 +82,23 @@
 
     <script>
         function shareDua() {
-            const name = document.getElementById("nameInput").value;
-            const surname = document.getElementById("surnameInput").value;
-            const relation = document.getElementById("relationInput").value;
+            const name = document.getElementById("nameInput").value.trim();
+            const surname = document.getElementById("surnameInput").value.trim();
+            const relation = document.getElementById("relationInput").value.trim();
+            const errorMessage = document.getElementById("errorMessage");
             const audioUrl = 'https://www.example.com/nazar-duasi.mp3';
 
-            let message = "Dinle: " + audioUrl;
-
-            if (name || surname || relation) {
-                message = `Sevgili ${relation ? relation + " " : ""}${name} ${surname} için Nazar Duası: ${audioUrl}`;
+            // Alanların boş olup olmadığını kontrol et
+            if (!name || !surname || !relation) {
+                errorMessage.style.display = "block";
+                setTimeout(() => {
+                    errorMessage.style.display = "none";
+                }, 3000);
+                return;
             }
 
+            // Mesaj oluştur
+            const message = `Sevgili ${relation} ${name} ${surname} için Nazar Duası: ${audioUrl}`;
             const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
