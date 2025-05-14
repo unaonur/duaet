@@ -87,6 +87,7 @@
             const relation = document.getElementById("relationInput").value.trim();
             const errorMessage = document.getElementById("errorMessage");
             const audioUrl = 'https://youtu.be/WmAJfkFCL98?si=TEE3tz2gkrMIXhXn';
+            const webUrl = 'https://unaonur.github.io/duaet/';
 
             // Alanların boş olup olmadığını kontrol et
             if (!name || !surname || !relation) {
@@ -98,7 +99,7 @@
             }
 
             // Mesaj oluştur
-            const message = `Sevgili ${relation} ${name} ${surname} için Nazar Duası: ${audioUrl}`;
+            const message = `Sevgili ${relation} ${name} ${surname} için Nazar Duası: ${audioUrl}  Yeniden dua olustur ${webUrl}`;
             const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
         }
